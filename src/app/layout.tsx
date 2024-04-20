@@ -4,8 +4,8 @@ import {Box} from '@mui/material';
 import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry';
 
 export const metadata = {
-  title: 'Evelina Stavila',
-  description: 'Evelina Stavila - Portfolio',
+  title: 'Model',
+  description: 'Model - Portfolio',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

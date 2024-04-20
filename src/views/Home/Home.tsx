@@ -1,38 +1,28 @@
-import { Avatar, Box, Button, Container, Grid, Stack, TextField, Typography } from '@mui/material';
 import Image from 'next/image';
+import { Avatar, Box, Button, Container, Grid, Stack, TextField, Typography } from '@mui/material';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 
-export const data = {
-  portfolio: [
-    {id: 1, url: 'images/evelinastavila/img-1.jpg', alt: 'evelinastavila-1'},
-    {id: 2, url: 'images/evelinastavila/img-2.jpg', alt: 'evelinastavila-2'},
-    {id: 3, url: 'images/evelinastavila/img-3.jpg', alt: 'evelinastavila-3'},
-    // {id: 4, url: 'images/evelinastavila/img-4.jpg', alt: 'evelinastavila-4'},
-    {id: 8, url: 'images/evelinastavila/img-8.jpg', alt: 'evelinastavila-8'},
-    {id: 9, url: 'images/evelinastavila/img-9.jpg', alt: 'evelinastavila-9'},
-    {id: 5, url: 'images/evelinastavila/img-5.jpg', alt: 'evelinastavila-5'},
-    // {id: 7, url: 'images/evelinastavila/img-7.jpg', alt: 'evelinastavila-7'},
-    // {id: 6, url: 'images/evelinastavila/img-6.jpg', alt: 'evelinastavila-6'},
-    {id: 10, url: 'images/evelinastavila/img-10.jpg', alt: 'evelinastavila-10'},
-    {id: 11, url: 'images/evelinastavila/img-11.jpg', alt: 'evelinastavila-11'},
-    {id: 12, url: 'images/evelinastavila/img-12.jpg', alt: 'evelinastavila-12'},
-  ],
-  contacts: {
-    imgUrl: 'images/evelinastavila/img-10.jpg', 
-    imgAlt: 'evelinastavila-10',
+import { DataType } from '@/app/page';
+
+const getContactIcon = (type: string) => {
+  switch(type) {
+    case 'email':
+      return <MailOutlineIcon fontSize="medium" />;
+    case 'phone':
+      return <LocalPhoneOutlinedIcon fontSize="medium" />;
+    case 'instagram':
+      return <InstagramIcon fontSize="medium" />;
+    default:
+      return null;
   }
 }
-export const Home = async () => {
-  // const res = await fetch('http://37.157.215.65:8080/api/gyms');
-  // const data = await res.json();
-  // const gyms = data.results as GymType[];
 
-  // const res2 = await fetch('http://37.157.215.65:8080/api/coaches');
-  // const data2 = await res2.json();
-  // const coaches = data2.results as CoachType[];
+export const Home = async ({data}: {data: DataType}) => {
 
+
+  const { general, banner, params, portfolio, bio, contacts } = data;
   return (
     <>
       <Container maxWidth={false} disableGutters component="section" sx={{position: 'relative', backgroundColor: 'white'}}>
@@ -56,7 +46,7 @@ export const Home = async () => {
             fontWeight: 200,
           }}
         >
-          Evelina Stavila
+          {general.title}
         </Typography>
         <video width="1536px" height="600px" muted autoPlay loop 
           style={{
@@ -67,8 +57,8 @@ export const Home = async () => {
             marginBottom: '-6px',
           }}
         >
-          <source src="images/evelinastavila/video-1.mp4" type="video/mp4" />
-          <source src="images/evelinastavila/video-1.mp4" type="video/ogg" />
+          <source src={banner[0]?.url} type="video/mp4" />
+          <source src="" type="video/ogg" />
           Your browser does not support the video tag.
         </video>
       </Container>
@@ -77,49 +67,20 @@ export const Home = async () => {
       {/* Params */}
       <Container maxWidth={false} disableGutters sx={{backgroundColor: 'black', mb: {xs: 8, sm: 10}}}>
         <Grid container>
-          <Grid item xs={6} md={3}>
-            <Stack direction="row" spacing={0.5} justifyContent="center" py={2}>
-              <Typography color="white" variant="subtitle2" fontWeight={300} textTransform="uppercase">
-                Height:
-              </Typography>
-              <Typography color="white" variant="subtitle2" fontWeight={500}>
-                1.75
-              </Typography>
-            </Stack>
-          </Grid>
-
-          <Grid item xs={6} md={3}>
-            <Stack direction="row" spacing={0.5} justifyContent="center" py={2}>
-              <Typography color="white" variant="subtitle2" fontWeight={300} textTransform="uppercase">
-                Bust:
-              </Typography>
-              <Typography color="white" variant="subtitle2" fontWeight={500}>
-                86
-              </Typography>
-            </Stack>
-          </Grid>
-
-          <Grid item xs={6} md={3}>
-            <Stack direction="row" spacing={0.5} justifyContent="center" py={2}>
-              <Typography color="white" variant="subtitle2" fontWeight={300} textTransform="uppercase">
-                Waist:
-              </Typography>
-              <Typography color="white" variant="subtitle2" fontWeight={500}>
-                69
-              </Typography>
-            </Stack>
-          </Grid>
-
-          <Grid item xs={6} md={3}>
-            <Stack direction="row" spacing={0.5} justifyContent="center" py={2}>
-              <Typography color="white" variant="subtitle2" fontWeight={300} textTransform="uppercase">
-                Hips:
-              </Typography>
-              <Typography color="white" variant="subtitle2" fontWeight={500}>
-                94
-              </Typography>
-            </Stack>
-          </Grid>
+          {
+            params.map((param) => (
+              <Grid item xs={6} md={3} key={`param-${param.id}`}>
+                <Stack direction="row" spacing={0.5} justifyContent="center" py={2}>
+                  <Typography color="white" variant="subtitle2" fontWeight={300} textTransform="uppercase">
+                    {param.label}
+                  </Typography>
+                  <Typography color="white" variant="subtitle2" fontWeight={500}>
+                    {param.value}
+                  </Typography>
+                </Stack>
+              </Grid>
+            ))
+          }
         </Grid>
       </Container>
 
@@ -131,7 +92,7 @@ export const Home = async () => {
 
         <Grid container spacing={0.5}>
         {
-          [...data.portfolio].map((item) => (
+          portfolio.map((item) => (
             <Grid key={`item-${item.id}`} item xs={12} sm={6} md={4}>
               <Image
                   key={`item-${item.id}`}
@@ -162,7 +123,7 @@ export const Home = async () => {
             <Box display="flex" alignItems="center" justifyContent="center" height="100%">
               <Avatar
                 alt="Remy Sharp"
-                src={data.contacts.imgUrl}
+                src={bio.media.url}
                 sx={{ width: 240, height: 240 }}
               />
             </Box>
@@ -170,10 +131,7 @@ export const Home = async () => {
           <Grid item xs={12} sm={6}>
             <Box display="flex" alignItems="center" justifyContent="center" height="100%">
               <Typography color="white" letterSpacing={4} fontWeight={300} sx={{textAlign: {xs: 'center', sm: 'left'}}}>
-                Hey, I'm Evelina Stavila, represented by WOT Models in Yerevan. 
-                Fashion is my passion, and I've walked the runways of Berlin to Yerevan, embracing diversity every step of the way. 
-                Let's collaborate on something extraordinary. 
-                Reach out via Instagram or WOT Models to make magic happen!
+                {bio.content}
               </Typography>
             </Box>
           </Grid>
@@ -191,20 +149,14 @@ export const Home = async () => {
                 </Typography>
 
                 <Stack spacing={2}>
-                  <Stack direction="row" alignItems="center" spacing={1}>
-                    <MailOutlineIcon fontSize="medium" />
-                    <Typography variant="subtitle1">evelinastavila@gmail.com</Typography>
-                  </Stack>
-            
-                  <Stack direction="row" alignItems="center" spacing={1}>
-                    <LocalPhoneOutlinedIcon fontSize="medium" />
-                    <Typography variant="subtitle1">+37499663322</Typography>
-                  </Stack>
-
-                  <Stack direction="row" alignItems="center" spacing={1}>
-                    <InstagramIcon fontSize="medium" />
-                    <Typography variant="subtitle1">@evelinastavila</Typography>
-                  </Stack>
+                  {
+                    contacts.map((contact) => (
+                      <Stack direction="row" alignItems="center" spacing={1} key={`contact-${contact.id}`}>
+                        {getContactIcon(contact.type)}
+                        <Typography variant="subtitle1">{contact.value}</Typography>
+                      </Stack>
+                    ))
+                  }
                 </Stack>
               </Box>
             </Box>
