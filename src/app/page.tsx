@@ -21,6 +21,14 @@ export type DataType = {
     label: string;
     value: string;
   }[];
+  instagram: {
+    nickname: string;
+    media: {
+      id: number;
+      url: string;
+      alt: string;
+    }[],
+  };
   portfolio: {
     id: number;
     url: string;

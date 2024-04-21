@@ -22,7 +22,7 @@ const getContactIcon = (type: string) => {
 export const Home = async ({data}: {data: DataType}) => {
 
 
-  const { general, banner, params, portfolio, bio, contacts } = data;
+  const { general, banner, params, instagram, portfolio, bio, contacts } = data;
   return (
     <>
       <Container maxWidth={false} disableGutters component="section" sx={{position: 'relative', backgroundColor: 'white'}}>
@@ -83,6 +83,45 @@ export const Home = async ({data}: {data: DataType}) => {
           }
         </Grid>
       </Container>
+
+      {/* Instagram */}
+      <Container disableGutters maxWidth="xl" sx={{px: 1, mb: 10}}>
+        <Stack justifyContent="center" mb={4}>
+          <Typography variant="h4" align="center" textTransform="uppercase" letterSpacing={2} fontWeight={300}>
+            Instagram
+          </Typography>
+          <Typography variant="subtitle2" align="center" fontWeight={600}>
+            {instagram.nickname}
+          </Typography>
+        </Stack>
+
+
+          <Grid container spacing={0.5}>
+          {
+            instagram.media.map((item) => (
+              <Grid key={`item-${item.id}`} item xs={6} sm={4} md={3} lg={2}>
+                <Image
+                    key={`item-${item.id}`}
+                    alt={item.alt}
+                    src={item.url || ''}
+                    width={220}
+                    height={220}
+                    style={{
+                      minWidth: '100%',
+                      minHeight: '100%',
+                      maxWidth: '100%',
+                      maxHeight: '100%',
+                      // height: '600px',
+                      // width: '384px',
+                      objectFit: 'cover',
+                    }}
+                  />
+              </Grid>
+            ))
+          }
+        </Grid>
+      </Container>
+
 
       {/* Portfolio */}
       <Container disableGutters maxWidth="xl" sx={{px: 1}}>
