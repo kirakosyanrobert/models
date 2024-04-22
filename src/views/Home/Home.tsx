@@ -22,7 +22,8 @@ const getContactIcon = (type: string) => {
 
 export const Home = async ({data}: {data: DataType}) => {
 
-  const { general, banner, params, portfolio, bio, contacts } = data;
+  const { general, banner, params, instagram, portfolio, bio, contacts } = data;
+  
   return (
     <>
       <Container maxWidth={false} disableGutters component="section" sx={{position: 'relative', backgroundColor: 'white'}}>
@@ -94,7 +95,7 @@ export const Home = async ({data}: {data: DataType}) => {
       <Portfolio data={data} />
 
       {/* BIO */}
-      <Container maxWidth={false} disableGutters sx={{ backgroundColor: 'black', mt: 14 }}>
+      <Container maxWidth={false} disableGutters sx={{ backgroundColor: 'black', mt: { xs: 8, sm: 14 } }}>
         <Box maxWidth="xl" mx="auto" sx={{ px: 2, py: 6 }}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
@@ -117,11 +118,48 @@ export const Home = async ({data}: {data: DataType}) => {
         </Box>
       </Container>
 
+      {/* Instagram */}
+      <Container disableGutters maxWidth="xl" sx={ { px: 1, mt: { xs: 8, sm: 14 } }}>
+        <Stack justifyContent="center" mb={4}>
+          <Typography variant="h4" align="center" textTransform="uppercase" letterSpacing={2} fontWeight={300}>
+            Instagram
+          </Typography>
+          <Typography variant="subtitle2" align="center" fontWeight={600} sx={{ textDecoration: 'underline'}}>
+            {instagram.nickname}
+          </Typography>
+        </Stack>
+
+        <Grid container spacing={0.5}>
+          {
+            instagram.media.map((item) => (
+              <Grid key={`item-${item.id}`} item xs={6} sm={4} md={3} lg={2}>
+                <Image
+                  key={`item-${item.id}`}
+                  alt={item.alt}
+                  src={item.url || ''}
+                  width={220}
+                  height={220}
+                  style={{
+                    minWidth: '100%',
+                    minHeight: '100%',
+                    maxWidth: '100%',
+                    maxHeight: '100%',
+                    // height: '600px',
+                    // width: '384px',
+                    objectFit: 'cover',
+                  }}
+                />
+              </Grid>
+            ))
+          }
+        </Grid>
+      </Container>
+
       {/* Contact */}
       <Container maxWidth="xl" sx={{ backgroundColor: 'white', py: { xs: 8, sm: 14 }}}>
-        <Grid container spacing={{xs: 8, sm: 4}} direction={{xs: 'column-reverse', sm: 'row'}}>
+        <Grid container spacing={{ xs: 8, sm: 4 }} direction={{ xs: 'column-reverse', sm: 'row' }}>
           <Grid item xs={12} sm={6}>
-            <Box display="flex" alignItems="flex-start" justifyContent={{xs: 'flex-start', sm: 'center'}} height="100%">
+            <Box display="flex" alignItems="flex-start" justifyContent={{ xs: 'flex-start', sm: 'center' }} height="100%">
               <Box>
                 <Typography variant="h4" textTransform="uppercase" letterSpacing={2} fontWeight={300} mb={4}>
                   Contacts
@@ -160,9 +198,8 @@ export const Home = async ({data}: {data: DataType}) => {
               </Button>
             </Box>
           </Grid>
-      </Grid>
+        </Grid>
       </Container>
-
 
       {/* Footer */}
       <Container maxWidth={false} disableGutters sx={{ backgroundColor: 'black', py: 1, px: 2 }}>

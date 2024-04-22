@@ -18,6 +18,23 @@ export const naredavtyanData: DataType = {
     {id: 3, label: 'Waist:', value: '69'},
     {id: 4, label: 'Hips:', value: '94'},
   ],
+  instagram: {
+    nickname: '@narreverse',
+    media: [
+      {id: 1, url: 'images/naredavtyan/img-1.jpg', alt: 'naredavtyan-1'},
+      {id: 2, url: 'images/naredavtyan/img-2.jpg', alt: 'naredavtyan-2'},
+      {id: 4, url: 'images/naredavtyan/img-4.jpg', alt: 'naredavtyan-4'},
+      {id: 3, url: 'images/naredavtyan/img-3.jpg', alt: 'naredavtyan-3'},
+      {id: 5, url: 'images/naredavtyan/img-5.jpg', alt: 'naredavtyan-5'},
+      {id: 6, url: 'images/naredavtyan/img-6.jpg', alt: 'naredavtyan-6'},
+      {id: 7, url: 'images/naredavtyan/img-7.jpg', alt: 'naredavtyan-7'},
+      {id: 8, url: 'images/naredavtyan/img-8.jpg', alt: 'naredavtyan-8'},
+      {id: 9, url: 'images/naredavtyan/img-9.jpg', alt: 'naredavtyan-9'},
+      {id: 10, url: 'images/naredavtyan/img-10.jpg', alt: 'naredavtyan-10'},
+      {id: 11, url: 'images/naredavtyan/img-11.jpg', alt: 'naredavtyan-11'},
+      {id: 12, url: 'images/naredavtyan/img-12.jpg', alt: 'naredavtyan-12'},
+    ],
+  },
   portfolio: [
     {id: 1, url: 'images/naredavtyan/img-1.jpg', alt: 'naredavtyan-1', order: 1},
     // {id: 2, url: 'images/naredavtyan/img-2.jpg', alt: 'naredavtyan-2', order: 2},

@@ -18,6 +18,23 @@ export const evelinastavilaData: DataType = {
     {id: 3, label: 'Waist:', value: '69'},
     {id: 4, label: 'Hips:', value: '94'},
   ],
+  instagram: {
+    nickname: '@evelinastavila',
+    media: [
+      {id: 1, url: 'images/evelinastavila/img-1.jpg', alt: 'evelinastavila-1'},
+      {id: 2, url: 'images/evelinastavila/img-2.jpg', alt: 'evelinastavila-2'},
+      {id: 3, url: 'images/evelinastavila/img-3.jpg', alt: 'evelinastavila-3'},
+      {id: 4, url: 'images/evelinastavila/img-4.jpg', alt: 'evelinastavila-4'},
+      {id: 8, url: 'images/evelinastavila/img-8.jpg', alt: 'evelinastavila-8'},
+      {id: 9, url: 'images/evelinastavila/img-9.jpg', alt: 'evelinastavila-9'},
+      {id: 5, url: 'images/evelinastavila/img-5.jpg', alt: 'evelinastavila-5'},
+      {id: 7, url: 'images/evelinastavila/img-7.jpg', alt: 'evelinastavila-7'},
+      {id: 6, url: 'images/evelinastavila/img-6.jpg', alt: 'evelinastavila-6'},
+      {id: 10, url: 'images/evelinastavila/img-10.jpg', alt: 'evelinastavila-10'},
+      {id: 11, url: 'images/evelinastavila/img-11.jpg', alt: 'evelinastavila-11'},
+      {id: 12, url: 'images/evelinastavila/img-12.jpg', alt: 'evelinastavila-12'},
+    ],
+  },
   portfolio: [
     {id: 1, url: 'images/evelinastavila/img-1.jpg', alt: 'evelinastavila-1', order: 1},
     {id: 2, url: 'images/evelinastavila/img-2.jpg', alt: 'evelinastavila-2', order: 2},

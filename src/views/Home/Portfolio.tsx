@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image';
-import { Avatar, Box, Button, Container, Grid, Stack, TextField, Typography, styled } from '@mui/material';
+import { Box, Button, Container, Grid, Typography, styled } from '@mui/material';
 import { DataType } from '@/app/page';
 
 const StyledImage = styled(Image)(({ theme }) => ({
